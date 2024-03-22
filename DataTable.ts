@@ -115,14 +115,16 @@ class DataTable {
     tableDataElement: HTMLTableCellElement,
     index: number,
     dataArray: string[],
-    classes?: { [key: string]: string[] }
+    classObject?: { [key: string]: string[] }
   ) {
-    if (index === 0 && classes?.["firstDataElement"]) {
-      tableDataElement.classList.add(...classes["firstDataElement"]);
-    } else if (index === dataArray.length - 1 && classes?.["lastDataElement"]) {
-      tableDataElement.classList.add(...classes["lastDataElement"]);
-    } else if (classes?.["dataElement"]) {
-      tableDataElement.classList.add(...classes["dataElement"]);
+    if (!classObject) {
+      return;
+    } else if (index === 0 && classObject?.["firstDataElement"]) {
+      tableDataElement.classList.add(...classObject["firstDataElement"]);
+    } else if (index === dataArray.length - 1 && classObject?.["lastDataElement"]) {
+      tableDataElement.classList.add(...classObject["lastDataElement"]);
+    } else if (classObject?.["dataElement"]) {
+      tableDataElement.classList.add(...classObject["dataElement"]);
     }
   }
 
